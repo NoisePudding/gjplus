@@ -1,7 +1,7 @@
 extends Control
 
 @onready var progress_bar: ProgressBar = $RiverStatus/ProgressBar
-@onready var trash_count: Label = $TrashCounter/Label
+@onready var trash_count: Label = $TrashCounter/Panel/Label
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	trash_count.text = "0/1"

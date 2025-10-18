@@ -64,8 +64,9 @@ func _on_cooldown_timeout() -> void:
 
 
 func _interact():
-	if interact_array[0] is Bin:
-		print("aaaaaaa")
+	if !interact_array.is_empty():
+		if interact_array[0] is Bin:
+			pass
 	if  !interact_array.is_empty() && !is_on_cooldown && !is_full:
 		var closer_body = interact_array[0]
 		for body in interact_array:

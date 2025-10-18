@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqya5ths0h2ox"]
+
+[ext_resource type="Texture2D" uid="uid://clr41wdofryfe" path="res://icon.svg" id="1_3xixx"]
+[ext_resource type="Script" uid="uid://b6t1p2oeughyn" path="res://scripts/trash.gd" id="1_exrr5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exrr5"]
+size = Vector2(63, 64)
+
+[node name="Trash" type="CharacterBody2D"]
+modulate = Color(0.76894045, 0, 0.15389326, 1)
+collision_layer = 4
+collision_mask = 32
+script = ExtResource("1_exrr5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3xixx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_exrr5")

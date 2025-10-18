@@ -3,12 +3,21 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
-var trash_count = 0
-var damage = 1
+@export var trash_count_max = 1
+@export var trash_count = 0
+@export var damage = 1
+
 var is_on_cooldown = false
 var interact_array = []
 var is_interacting = false
+var is_full = false
+
 @onready var cooldown_timer: Timer = $Cooldown
+@onready var ui: Control = get_tree().get_first_node_in_group("UI")
+
+func _ready() -> void:
+	#ui.update_trash_count(trash_count,trash_count_max)
+	pass
 
 func _physics_process(_delta: float) -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -22,14 +31,17 @@ func _physics_process(_delta: float) -> void:
 		_interact()
 	move_and_slide()
 
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		is_interacting = true
 	if Input.is_action_just_released("interact"):
 		is_interacting = false
 
+
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	interact_array.append(body)
+
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	interact_array.erase(body)
@@ -37,13 +49,24 @@ func _on_interact_area_body_exited(body: Node2D) -> void:
 
 func on_trash_removed(drop_value: int):
 	trash_count += drop_value
+	ui.update_trash_count(trash_count,trash_count_max)
+	if trash_count >= trash_count_max:
+		is_full = true
 
+func on_trash_recycled(drop_value: int):
+	trash_count -= drop_value
+	ui.update_trash_count(trash_count,trash_count_max)
+	if trash_count < trash_count_max:
+		is_full = false
 
 func _on_cooldown_timeout() -> void:
 	is_on_cooldown = false
 
+
 func _interact():
-	if  !interact_array.is_empty() && !is_on_cooldown:
+	if interact_array[0] is Bin:
+		print("aaaaaaa")
+	if  !interact_array.is_empty() && !is_on_cooldown && !is_full:
 		var closer_body = interact_array[0]
 		for body in interact_array:
 			if position.distance_to(body.global_position) < position.distance_to(closer_body.global_position):
@@ -51,3 +74,4 @@ func _interact():
 		closer_body.take_damage(damage)
 		is_on_cooldown = true
 		cooldown_timer.start()
+	

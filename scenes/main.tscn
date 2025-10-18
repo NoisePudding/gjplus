@@ -71,7 +71,7 @@ position = Vector2(576, 40)
 script = ExtResource("2_0wfyh")
 
 [node name="Timer" type="Timer" parent="Spawn"]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="Dam" type="StaticBody2D" parent="."]

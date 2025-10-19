@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c2ka28fgwm71j"]
+
+[ext_resource type="Shader" uid="uid://cf3hbknfika1e" path="res://shaders/water_shader.gdshader" id="1_j6aso"]
+
+[resource]
+shader = ExtResource("1_j6aso")
+shader_parameter/intensity = 0.0
+shader_parameter/base_water_color = Color(0.45378214, 0.25149313, 0.118823044, 1)
+shader_parameter/highlight_scale = 3.0
+shader_parameter/clarity = 0.22000001045

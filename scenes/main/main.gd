@@ -20,11 +20,17 @@ func _physics_process(delta: float) -> void:
 
 func _update_river_status(value: float,delta:float):
 	if value <= 50:
-		sprite.modulate = lerp(sprite.modulate, Color.GRAY, delta*10.0)
+		#sprite.modulate = lerp(sprite.modulate, Color.GRAY, delta*10.0)
+		sprite.material.set_shader_parameter("base_water_color",Color(0.454, 0.251, 0.119))
 	else:
-		sprite.modulate = lerp(sprite.modulate, Color.BLUE, delta*10.0)
+		#sprite.modulate = lerp(sprite.modulate, Color.BLUE, delta*10.0)
+		sprite.material.set_shader_parameter("base_water_color",Color(0.314, 0.388, 0.769))
 	ui.update_progress_bar(value)
 
 
 func _game_over():
 	ui.show_game_over()
+
+func _on_recycle_bin_full_bin() -> void:
+	ui.display_epi_select()
+	

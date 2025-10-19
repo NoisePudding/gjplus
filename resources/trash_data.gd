@@ -5,4 +5,5 @@ extends Resource
 @export var sprite: Texture2D = null
 @export var stuck_height = 1
 @export var speed = 300
-@export var drop_value = 10
+@export var drop_value = 1
+@export var trash_type = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dj23jsxt3olcy"]
 
-[ext_resource type="Script" uid="uid://br8tbc5kabwn8" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://br8tbc5kabwn8" path="res://scenes/ui.gd" id="1_nt7q6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0.96102864, 0.8323885, 0.74762285, 1)
@@ -85,7 +85,7 @@ offset_bottom = 40.0
 layout_mode = 2
 text = "Game Over"
 
-[node name="Button" type="Button" parent="GameOver/VBoxContainer"]
+[node name="RetryButton" type="Button" parent="GameOver/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 text = "Try Again"
@@ -122,4 +122,64 @@ text = "0
 "
 horizontal_alignment = 1
 
-[connection signal="pressed" from="GameOver/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="EpiSelect" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="EpiSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -23.0
+offset_right = 150.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EpiSelect/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="EpiSelect/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "EPI"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EpiSelect/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GloveButton" type="Button" parent="EpiSelect/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "Luvas"
+
+[node name="ProtectionButton" type="Button" parent="EpiSelect/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "Macacão"
+
+[node name="BootButton" type="Button" parent="EpiSelect/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "Botas"
+
+[connection signal="pressed" from="GameOver/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="EpiSelect/Panel/VBoxContainer/HBoxContainer/GloveButton" to="." method="_on_glove_button_pressed"]
+[connection signal="pressed" from="EpiSelect/Panel/VBoxContainer/HBoxContainer/ProtectionButton" to="." method="_on_protection_button_pressed"]
+[connection signal="pressed" from="EpiSelect/Panel/VBoxContainer/HBoxContainer/BootButton" to="." method="_on_boot_button_pressed"]

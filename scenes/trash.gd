@@ -14,6 +14,11 @@ var resource = preload("res://resources/trash_common.tres")
 @onready var progress_wheel: TextureProgressBar = $ProgressWheel
 
 @onready var player = get_tree().get_first_node_in_group("Player")
+
+
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+
 func _ready() -> void:
 
 	# sprite = resource.sprite
@@ -36,6 +41,8 @@ func take_damage(damage_value: int):
 	health -= damage_value
 	if health <= 0:
 		trash_removed.emit(drop_value)
+		audio_stream_player.play()
+		await audio_stream_player.finished
 		queue_free()
 
 

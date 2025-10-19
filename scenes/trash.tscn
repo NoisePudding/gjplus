@@ -33,3 +33,5 @@ texture_under = ExtResource("3_2cq4d")
 texture_progress = ExtResource("3_2cq4d")
 tint_under = Color(0.65, 0.65, 0.65, 1)
 tint_progress = Color(0.51, 1, 0.7223334, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

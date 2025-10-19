@@ -4,6 +4,7 @@ extends Control
 @onready var progress_bar: ProgressBar = $RiverStatus/ProgressBar
 @onready var trash_count: Label = $TrashCounter/Panel/Label
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 signal upgrade_chosen(choice : int)
 
@@ -58,3 +59,6 @@ func _on_boot_button_pressed() -> void:
 	upgrade_chosen.emit(2)
 	get_tree().paused = false
 	epi_select.hide()
+
+func play_no_room():
+	animation_player.play("no_room")

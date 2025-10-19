@@ -3,7 +3,7 @@ extends Control
 @onready var epi_select: Control = $EpiSelect
 @onready var progress_bar: ProgressBar = $RiverStatus/ProgressBar
 @onready var trash_count: Label = $TrashCounter/Panel/Label
-
+@onready var net_count: Label = $NetCounter/Label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 signal upgrade_chosen(choice : int)
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -62,3 +62,7 @@ func _on_boot_button_pressed() -> void:
 
 func play_no_room():
 	animation_player.play("no_room")
+
+
+func update_net_count(value: int):
+	net_count.text = str(value)

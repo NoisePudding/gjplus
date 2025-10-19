@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1_j6aso")
-shader_parameter/intensity = 0.0
-shader_parameter/base_water_color = Color(0.45378214, 0.25149313, 0.118823044, 1)
-shader_parameter/highlight_scale = 3.0
-shader_parameter/clarity = 0.22000001045
+shader_parameter/intensity = 1.0
+shader_parameter/base_water_color = Color(0.105, 0.15, 0.118, 1)
+shader_parameter/highlight_scale = 2.48500011477762
+shader_parameter/clarity = 1.0

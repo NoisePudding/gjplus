@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://chjxx1gwdojub"]
+[gd_scene load_steps=6 format=3 uid="uid://chjxx1gwdojub"]
 
-[ext_resource type="Texture2D" uid="uid://cshiroqqu0een" path="res://assets/placeholder.png" id="1_fcvdc"]
 [ext_resource type="Script" uid="uid://chjyk2h7rwrea" path="res://scenes/recycle_bin.gd" id="1_mgr5a"]
+[ext_resource type="Texture2D" uid="uid://v36jlh4ue0ey" path="res://assets/plastic.png" id="2_576ct"]
 [ext_resource type="Texture2D" uid="uid://bq6btt6a2hyy7" path="res://assets/progress_wheel.png" id="3_q7cin"]
+[ext_resource type="AudioStream" uid="uid://c41k4flp5mjrf" path="res://sfx/sfx-feedback-positivo.ogg" id="4_576ct"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgr5a"]
 size = Vector2(63, 63)
@@ -16,9 +17,9 @@ script = ExtResource("1_mgr5a")
 shape = SubResource("RectangleShape2D_mgr5a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.73, 0.1898, 0.1988032, 1)
-scale = Vector2(2, 2)
-texture = ExtResource("1_fcvdc")
+position = Vector2(0, -3.9999998)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_576ct")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -38,3 +39,6 @@ fill_mode = 4
 texture_under = ExtResource("3_q7cin")
 texture_progress = ExtResource("3_q7cin")
 tint_progress = Color(0.91536456, 0.4729498, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_576ct")

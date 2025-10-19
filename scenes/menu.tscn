@@ -1,22 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8q8x8x8x8x8"]
+[gd_scene load_steps=5 format=3 uid="uid://kh7d0qrsoxwd"]
 
-[ext_resource type="Script" path="res://scenes/menu.gd" id="1_8q8x8"]
+[ext_resource type="Script" uid="uid://dnr84ecsdttgy" path="res://scenes/menu.gd" id="1_8q8x8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8q8x8"]
 font_size = 48
 font_color = Color(0.2, 0.6, 0.8, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_menu"]
-bg_color = Color(0.1, 0.1, 0.1, 0.9)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.4, 0.4, 0.4, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
@@ -29,6 +17,18 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_menu"]
+bg_color = Color(0.1, 0.1, 0.1, 0.9)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -67,8 +67,8 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 text = "Play"
 
 [node name="RestartButton" type="Button" parent="."]
@@ -85,8 +85,8 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 text = "Restart Game"
 
 [node name="SettingsButton" type="Button" parent="."]
@@ -103,8 +103,8 @@ offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="."]
@@ -121,8 +121,8 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 text = "Quit"
 
 [node name="SettingsPanel" type="Panel" parent="."]
@@ -188,8 +188,6 @@ offset_top = 190.0
 offset_right = 100.0
 offset_bottom = 220.0
 grow_horizontal = 2
-min_value = 0.0
-max_value = 100.0
 value = 100.0
 
 [node name="BackButton" type="Button" parent="SettingsPanel"]
@@ -203,6 +201,6 @@ offset_right = 100.0
 offset_bottom = 290.0
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
 text = "Back"

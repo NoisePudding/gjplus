@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cxujl8n0o6bqm"]
+
+[ext_resource type="Script" uid="uid://dytmsoueuhee0" path="res://resources/trash_data.gd" id="1_iwprn"]
+[ext_resource type="Texture2D" uid="uid://bniagebeehkkw" path="res://assets/trash_tire.png" id="2_iwprn"]
+
+[resource]
+script = ExtResource("1_iwprn")
+health = 15
+sprite = ExtResource("2_iwprn")
+trash_type = 1

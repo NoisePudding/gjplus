@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://n13rjnm4q0o"]
+[gd_scene load_steps=10 format=3 uid="uid://n13rjnm4q0o"]
 
 [ext_resource type="Script" uid="uid://xco4ld0knxn5" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bmuk5yu5k4huc" path="res://assets/player_v1.png" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://yxdwhnvaq2yx" path="res://sfx/sfx-feedback-negativo-02.ogg" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://08jvu4yr8wq1" path="res://assets/player_v1-sheet.png" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(42, 73)
@@ -9,12 +11,43 @@ size = Vector2(42, 73)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(95, 88)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g2els")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 65
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_g2els")
 
@@ -24,7 +57,7 @@ shape = SubResource("RectangleShape2D_g2els")
 
 [node name="InteractArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 68
+collision_mask = 196
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 shape = SubResource("RectangleShape2D_qhqgy")
@@ -51,6 +84,18 @@ text = "E"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="StepTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="NoRoomPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qhqgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_fjrip")
+animation = &"walk"
+
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]

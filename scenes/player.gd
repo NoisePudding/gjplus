@@ -15,6 +15,7 @@ var is_interacting = false
 var is_full = false
 var inventory = []
 
+@onready var prompt: Control = $Prompt
 @onready var cooldown_timer: Timer = $Cooldown
 @onready var ui: Control = get_tree().get_first_node_in_group("UI")
 @onready var sprite: Sprite2D = $Sprite2D
@@ -35,6 +36,12 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0,  SPEED + speed_bonus)
 	if is_interacting:
 		_interact()
+
+	if !interact_array.is_empty():
+		prompt.show()
+	else:
+		prompt.hide()
+
 	move_and_slide()
 
 
@@ -47,11 +54,12 @@ func _input(_event: InputEvent) -> void:
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	interact_array.append(body)
+	#prompt.show()
 
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	interact_array.erase(body)
-
+	#prompt.hide()
 
 func on_trash_removed(drop_value: int):
 	trash_count += drop_value
@@ -76,14 +84,17 @@ func _interact():
 			is_on_cooldown = true
 			cooldown_timer.start()
 			is_interacting = false
-		elif !is_on_cooldown && !is_full and interact_array[0] is Trash:
+		elif !is_on_cooldown && interact_array[0] is Trash:
 			var closer_body = interact_array[0]
 			for body in interact_array:
 				if position.distance_to(body.global_position) < position.distance_to(closer_body.global_position):
 					closer_body = body
-			closer_body.take_damage(damage)
-			is_on_cooldown = true
-			cooldown_timer.start()
+			if !is_full:
+				closer_body.take_damage(damage)
+				is_on_cooldown = true
+				cooldown_timer.start()
+			else:
+				ui.play_no_room()
 	
 func on_upgrade_chosen(choice:int):
 	match choice:

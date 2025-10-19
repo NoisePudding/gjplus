@@ -19,10 +19,12 @@ func _physics_process(delta: float) -> void:
 		_game_over()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	pass
+	# if event.is_action_pressed("ui_cancel"):
+	# 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _update_river_status(value: float, _delta: float):
+	river_status_value = value
 	if value <= 50:
 		#sprite.modulate = lerp(sprite.modulate, Color.GRAY, delta*10.0)
 		sprite.material.set_shader_parameter("base_water_color", Color(0.454, 0.251, 0.119))
@@ -37,3 +39,8 @@ func _game_over():
 
 func _on_recycle_bin_full_bin() -> void:
 	ui.display_epi_select()
+
+
+func _on_spawn_final_level() -> void:
+	if river_status_value == river_status_max:
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")

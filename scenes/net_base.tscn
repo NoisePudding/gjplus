@@ -18,5 +18,5 @@ texture = ExtResource("2_i2lub")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_88u14")
 
-[node name="Anchor" type="Node2D" parent="."]
-position = Vector2(-224, -87)
+[node name="Anchor" type="Node2D" parent="." groups=["NetBase"]]
+position = Vector2(-224, -53)

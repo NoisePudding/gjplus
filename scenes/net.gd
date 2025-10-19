@@ -9,8 +9,7 @@ var health = 20
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 @onready var sprite: Sprite2D = $StaticBody2D/Sprite2D
-
-
+@onready var net_base = get_parent().get_parent()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	progress_bar.value = health
@@ -48,6 +47,7 @@ func build_net():
 
 func destroy_net():
 	net_destroyed.emit()
+	net_base.is_net_on = false
 	queue_free()
 
 func take_damage(value: int):

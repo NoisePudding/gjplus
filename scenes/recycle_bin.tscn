@@ -42,3 +42,4 @@ tint_progress = Color(0.91536456, 0.4729498, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_576ct")
+bus = &"SFX"

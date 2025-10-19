@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d2qsmsjpnpivu" path="res://assets/trash.png" id="2_2cq4d"]
 [ext_resource type="Texture2D" uid="uid://bq6btt6a2hyy7" path="res://assets/progress_wheel.png" id="3_2cq4d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_exrr5"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cq4d"]
+radius = 35.0
 
 [node name="Trash" type="CharacterBody2D" groups=["Trash"]]
 collision_layer = 4
@@ -17,7 +17,7 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_2cq4d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_exrr5")
+shape = SubResource("CircleShape2D_2cq4d")
 
 [node name="ProgressWheel" type="TextureProgressBar" parent="."]
 visible = false
@@ -35,3 +35,4 @@ tint_under = Color(0.65, 0.65, 0.65, 1)
 tint_progress = Color(0.51, 1, 0.7223334, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

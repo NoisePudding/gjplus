@@ -26,6 +26,6 @@ func update_counter(value):
 		audio_stream_player.play()
 		full_bin.emit()
 		counter = 0
-		max_counter += 5
+		#max_counter += 5
 		texture_progress_bar.value = counter
 		texture_progress_bar.max_value = max_counter

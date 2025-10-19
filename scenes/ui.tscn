@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj23jsxt3olcy"]
+[gd_scene load_steps=11 format=3 uid="uid://dj23jsxt3olcy"]
 
 [ext_resource type="Script" uid="uid://br8tbc5kabwn8" path="res://scenes/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://dm0kn4qwrymjc" path="res://assets/net_UI.png" id="2_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://d2al1ndx8fyio" path="res://assets/paper-trash.png" id="2_yev5y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0.96102864, 0.8323885, 0.74762285, 1)
@@ -167,6 +168,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0
 "
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TrashCounter"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 22.0
+offset_right = 70.0
+offset_bottom = 78.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_yev5y")
 
 [node name="NetCounter" type="Control" parent="."]
 anchors_preset = 0

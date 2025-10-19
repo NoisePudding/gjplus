@@ -83,12 +83,14 @@ offset_bottom = -47.0
 text = "E"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="StepTimer" type="Timer" parent="."]
 wait_time = 0.3
 
 [node name="NoRoomPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qhqgy")
+bus = &"SFX"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.5, 2.5)

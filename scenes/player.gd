@@ -15,18 +15,24 @@ var is_interacting = false
 var is_full = false
 var inventory = []
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var prompt: Control = $Prompt
 @onready var cooldown_timer: Timer = $Cooldown
 @onready var ui: Control = get_tree().get_first_node_in_group("UI")
 @onready var sprite: Sprite2D = $Sprite2D
+
+var step_audio_array = [preload("res://sfx/sfx-passos-grama-001.ogg")]
 func _ready() -> void:
-	#ui.update_trash_count(trash_count,trash_count_max)
+	#ui.update_trash_count(trash_count,trash_count_m+x)
 	pass
 
 func _physics_process(_delta: float) -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction and !is_interacting:
 		velocity = direction * (SPEED + speed_bonus)
+		if !audio_stream_player.playing:
+			audio_stream_player.stream = step_audio_array.pick_random()
+			audio_stream_player.play()
 		if direction.x < 0:
 			sprite.flip_h = true
 		else:
@@ -34,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED + speed_bonus)
 		velocity.y = move_toward(velocity.y, 0,  SPEED + speed_bonus)
+		
 	if is_interacting:
 		_interact()
 

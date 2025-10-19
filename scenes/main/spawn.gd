@@ -18,6 +18,8 @@ func _process(_delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	var instance = trash.instantiate()
+	instance.velocity.y = 300
 	instance.position.x = pos_array.pick_random()
+
 	add_child(instance)
 	

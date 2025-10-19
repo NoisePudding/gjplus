@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Trash
 
 signal trash_removed(value: int)
 
@@ -8,6 +9,7 @@ var resource = preload("res://resources/trash_common.tres")
 @onready var stuck_height = resource.stuck_height
 @onready var speed = resource.speed
 @onready var drop_value = resource.drop_value
+@onready var trash_type = resource.trash_type
 
 @onready var progress_wheel: TextureProgressBar = $ProgressWheel
 
@@ -25,7 +27,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 
-	velocity.y = speed
 	move_and_slide()
 
 
@@ -36,3 +37,14 @@ func take_damage(damage_value: int):
 	if health <= 0:
 		trash_removed.emit(drop_value)
 		queue_free()
+
+
+
+func _collect():
+	match trash_type:
+		0:
+			pass
+
+func _drop_rng():
+	if randf() > 0.7:
+		player.inventory.append["Net"]
